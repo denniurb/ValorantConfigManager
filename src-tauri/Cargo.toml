@@ -1,6 +1,6 @@
 [package]
 name = "valorant-config-manager"
-version = "2.0.0"
+version = "2.1.0"
 description = "Valorant Config Manager"
 authors = ["denni"]
 edition = "2024"

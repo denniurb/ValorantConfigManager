@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { api, errText } from "../api";
 import { useApp } from "../state";
+import { ActList, RankCards, RankIcon, RrHistory, useTiers, type MmrHistoryEntry, type MmrV3, type TierInfo } from "../components/RankPanel";
 
 const TTL = { matches: 180, rank: 300, account: 600 };
 const FILTERS = [
@@ -26,7 +27,9 @@ const RANKS: Record<number, [string, string, string?]> = {
   27: ["RAD", "#ffe400", "#1a1000"],
 };
 
-function RankBadge({ tier }: { tier: number }) {
+/** Rang-Icon, solange valorant-api.com nicht erreichbar ist als Text-Kürzel */
+function RankBadge({ tier, tiers }: { tier: number; tiers: Record<number, TierInfo> }) {
+  if (tier > 0 && tiers[tier]?.icon) return <RankIcon tier={tier} tiers={tiers} size={22} />;
   const [abbr, bg, fg] = RANKS[tier] ?? ["?", "#353540"];
   return (
     <span className="rank-badge" style={{ background: bg, color: fg ?? "#fff" }}>
@@ -61,7 +64,9 @@ export function StatsTab() {
   const [keyInput, setKeyInput] = useState("");
   const [filter, setFilter] = useState("competitive");
   const [account, setAccount] = useState<{ name: string; level: number } | null>(null);
-  const [rank, setRank] = useState<{ tier: string; rr: number } | null>(null);
+  const [mmr, setMmr] = useState<MmrV3 | null>(null);
+  const [rrHistory, setRrHistory] = useState<MmrHistoryEntry[] | null>(null);
+  const tiers = useTiers();
   const [matches, setMatches] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -77,15 +82,17 @@ export function StatsTab() {
     if (!n || !t || !key) return;
     setLoading(true);
     setError(null);
-    const [acc, mmr, m] = await Promise.allSettled([
+    const [acc, mmrRes, hist, m] = await Promise.allSettled([
       get(`v1/account/${enc(n)}/${enc(t)}`, TTL.account),
-      get(`v2/mmr/eu/${enc(n)}/${enc(t)}`, TTL.rank),
+      get(`v3/mmr/eu/pc/${enc(n)}/${enc(t)}`, TTL.rank),
+      get(`v2/mmr-history/eu/pc/${enc(n)}/${enc(t)}`, TTL.rank),
       get(`v3/matches/eu/${enc(n)}/${enc(t)}?size=20&mode=${mode}`, TTL.matches),
     ]);
     setAccount(acc.status === "fulfilled" ? { name: `${acc.value.name}#${acc.value.tag}`, level: acc.value.account_level } : null);
-    setRank(mmr.status === "fulfilled" ? { tier: mmr.value.current_data?.currenttierpatched ?? "—", rr: mmr.value.current_data?.ranking_in_tier ?? 0 } : null);
+    setMmr(mmrRes.status === "fulfilled" ? mmrRes.value : null);
+    setRrHistory(hist.status === "fulfilled" ? hist.value.history ?? [] : null);
     setMatches(m.status === "fulfilled" ? m.value : []);
-    const firstErr = [acc, mmr, m].find((r) => r.status === "rejected") as PromiseRejectedResult | undefined;
+    const firstErr = [acc, mmrRes, m].find((r) => r.status === "rejected") as PromiseRejectedResult | undefined;
     if (acc.status === "rejected") setError(errText(acc.reason));
     else if (m.status === "rejected") setError(errText(firstErr?.reason));
     setLoading(false);
@@ -153,7 +160,7 @@ export function StatsTab() {
         <div className="player-head">
           <h2>{account?.name ?? (name ? `${name}#${tag}` : "Spieler suchen")}</h2>
           <p className="muted">
-            {account ? `Level ${account.level}` : ""} {rank && <>· <b className="accent">{rank.tier}</b> · {rank.rr} RR</>}
+            {account ? `Level ${account.level}` : ""}
           </p>
         </div>
         <div className="search-row">
@@ -167,6 +174,22 @@ export function StatsTab() {
           </button>
         </div>
       </div>
+
+      {mmr && (
+        <div className="rank-row">
+          <RankCards mmr={mmr} tiers={tiers} />
+          <div className="card rr-card">
+            <span className="kpi-label">RR-Verlauf</span>
+            {rrHistory ? <RrHistory history={rrHistory} /> : <span className="muted">Nicht verfügbar</span>}
+          </div>
+        </div>
+      )}
+      {mmr && mmr.seasonal.length > 0 && (
+        <div className="card">
+          <span className="kpi-label">Acts</span>
+          <ActList seasonal={mmr.seasonal} tiers={tiers} />
+        </div>
+      )}
 
       <div className="filters">
         {FILTERS.map(([id, label]) => (
@@ -265,6 +288,7 @@ function Scoreboard({ match, me, fetchTier, onClose, onPlayer }: {
   match: any; me: string; fetchTier: (n: string, t: string) => Promise<number>; onClose: () => void; onPlayer: (n: string, t: string) => void;
 }) {
   const [tiers, setTiers] = useState<Record<string, number>>({});
+  const tierInfo = useTiers();
   const players: any[] = match.players?.all_players ?? [];
   const isDM = match.metadata?.mode?.toLowerCase() === "deathmatch";
   const rounds = Math.max(1, match.metadata?.rounds_played ?? 1);
@@ -280,7 +304,7 @@ function Scoreboard({ match, me, fetchTier, onClose, onPlayer }: {
       <button key={`${p.name}#${p.tag}`} className={`sb-row ${p.name?.toLowerCase() === me.toLowerCase() ? "me" : ""}`} onClick={() => onPlayer(p.name, p.tag)}>
         {isDM && <span className={i === 0 ? "gold" : "muted"}>#{i + 1}</span>}
         <span className="sb-name">
-          <RankBadge tier={tiers[`${p.name}#${p.tag}`] ?? 0} /> {p.name}#{p.tag}
+          <RankBadge tier={tiers[`${p.name}#${p.tag}`] ?? 0} tiers={tierInfo} /> {p.name}#{p.tag}
         </span>
         <span>{p.character}</span>
         <span>{s.kills}/{s.deaths}/{s.assists}</span>

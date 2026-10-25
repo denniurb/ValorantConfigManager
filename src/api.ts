@@ -140,6 +140,7 @@ export const api = {
 
   henrikGet: (path: string, ttl: number, apiKey: string) => invoke<string>("henrik_get", { path, ttl, apiKey }),
   henrikInvalidate: (fragment: string) => invoke<void>("henrik_invalidate", { fragment }),
+  competitiveTiers: () => invoke<string>("competitive_tiers"),
 };
 
 export const errText = (e: unknown) => (typeof e === "string" ? e : e instanceof Error ? e.message : String(e));

@@ -184,6 +184,11 @@ async fn henrik_get(state: tauri::State<'_, stats::StatsState>, path: String, tt
 }
 
 #[tauri::command]
+async fn competitive_tiers(state: tauri::State<'_, stats::StatsState>) -> Res<String> {
+    state.competitive_tiers().await
+}
+
+#[tauri::command]
 fn henrik_invalidate(state: tauri::State<'_, stats::StatsState>, fragment: String) {
     state.invalidate(&fragment)
 }
@@ -221,6 +226,7 @@ pub fn run() {
             crosshair_load_default,
             henrik_get,
             henrik_invalidate,
+            competitive_tiers,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
