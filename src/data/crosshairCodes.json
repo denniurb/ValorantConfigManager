@@ -1,0 +1,582 @@
+[
+ {
+  "name": "AAAAY",
+  "code": "0;P;h;0;0t;1;0l;4;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Afajer",
+  "code": "0;s;1;P;c;5;o;1;d;1;z;3;0b;0;1b;0;S;s;0.628;o;1"
+ },
+ {
+  "name": "ANGE1",
+  "code": "0;P;h;0;d;1;f;0;0l;3;0o;1;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "ardiis",
+  "code": "0;s;1;P;h;0;s;0;0l;3;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "aspas",
+  "code": "0;P;c;5;o;1;d;1;z;3;f;0;0b;0;1b;0"
+ },
+ {
+  "name": "aspas",
+  "code": "0;s;1;P;c;5;o;1;0l;4;0v;3;0g;1;0o;0;0a;1;0f;0;1b;0;S;c;0;s;1.2;o;1"
+ },
+ {
+  "name": "aspas",
+  "code": "0;s;1;P;c;7;h;0;0l;4;0o;0;0a;1;0f;0;1b;0;S;c;1;o;1"
+ },
+ {
+  "name": "Asuna",
+  "code": "0;P;o;1;0t;1;0l;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "AvovA",
+  "code": "0;P;c;5;h;0;f;0;s;0;0l;4;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "AYRIN",
+  "code": "0;P;c;1;h;0;f;0;s;0;0t;1;0l;2;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "bang",
+  "code": "0;P;h;0;0l;4;0o;0;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0"
+ },
+ {
+  "name": "Benkai",
+  "code": "0;s;1;P;c;8;t;2;o;1;d;1;b;1;a;0.462;f;0;0t;10;0l;14;0v;0;0g;1;0o;5;0a;0.308;0f;0;1t;1;1l;6;1v;0;1g;1;1o;18;1a;0;1m;0;1f;0;S;c;5;s;1.398"
+ },
+ {
+  "name": "BerLIN",
+  "code": "0;s;1;P;c;4;u;DB0B8AFF;o;1;d;1;z;6;a;0;f;0;m;1;0t;10;0l;10;0v;0;0g;1;0o;17;0a;0;0f;0;1t;6;1l;0;1v;3;1g;1;1o;0;1a;1;1m;0;1e;0.281;S;b;1;c;8;t;DB0B8AFF"
+ },
+ {
+  "name": "Boaster",
+  "code": "0;p;0;s;1;P;c;1;t;2;o;1;f;0;0o;2;0a;1;0f;0;1b;0;A;d;1;0b;0;1b;0;S;o;0.502"
+ },
+ {
+  "name": "Boaster",
+  "code": "0;s;1;P;c;5;o;1;d;1;f;0;s;0;0l;0;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1f;0;S;c;1;o;1"
+ },
+ {
+  "name": "BONECOLD",
+  "code": "0;P;c;1;h;0;f;0;s;0;0l;2;0o;1;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Boostio",
+  "code": "0;P;h;0;0t;1;0l;2;0a;1;0f;0;1l;5;1o;2;1a;1;1m;0;1f;0"
+ },
+ {
+  "name": "C0M",
+  "code": "0;P;o;1;f;0;s;0;0t;1;0l;3;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "CHICHOO",
+  "code": "0;s;1;P;c;5;u;1B29C1FF;h;0;f;0;s;0;0l;4;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Chronicle",
+  "code": "0;P;c;7;o;1;f;0;0t;1;0l;2;0v;2;0g;1;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "cNed",
+  "code": "0;P;c;1;u;7FFFD4FF;o;1;d;1;0b;0;1b;0"
+ },
+ {
+  "name": "cNed",
+  "code": "0;P;h;0;f;0;0l;5;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "cNed",
+  "code": "0;s;1;P;h;0;f;0;0l;5;0o;1;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "crashies",
+  "code": "0;s;1;P;c;1;h;0;f;0;0l;4;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "crow",
+  "code": "0;s;1;P;o;1;f;0;0t;1;0l;1;0o;1;0a;1;0f;0;1b;0;S;c;0;s;0.5;o;1"
+ },
+ {
+  "name": "Crws",
+  "code": "0;c;1;s;1;P;c;1;h;0;0l;3;0o;2;0a;1;0f;0;1b;0;S;c;1;s;0.884;o;0.798"
+ },
+ {
+  "name": "Cryocells",
+  "code": "0;s;1;P;h;0;0l;4;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "d4v41",
+  "code": "0;s;1;P;c;1;h;0;0l;3;0o;2;0a;1;0f;0;1b;0;S;d;0"
+ },
+ {
+  "name": "Demon1",
+  "code": "0;P;o;1;0t;1;0l;3;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Demon1",
+  "code": "0;s;1;P;o;1;d;1;m;1;0b;0;1b;0"
+ },
+ {
+  "name": "Dep",
+  "code": "0;s;1;P;o;0.1;f;0;s;0;0t;1;0l;2;0o;1;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Derke",
+  "code": "0;s;1;P;u;FFA500FF;o;1;d;1;f;0;s;0;0b;0;1t;0;1l;1;1o;0;1a;1;1m;0;1f;0;S;o;1"
+ },
+ {
+  "name": "Derrek",
+  "code": "0;s;1;P;c;1;o;1;0t;1;0l;3;0a;1;0f;0;1b;0;S;s;0.652"
+ },
+ {
+  "name": "dgzin",
+  "code": "0;s;1;P;c;4;o;1;m;1;0t;1;0l;1;0a;0;0f;0;1t;1;1l;1;1o;4;1a;0;1m;0;1f;0;S;c;0;s;0.591;o;1"
+ },
+ {
+  "name": "dimasick",
+  "code": "0;P;c;5;o;1;d;1;z;3;0t;1;0l;1;0o;1;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Ethan",
+  "code": "0;P;h;0;0l;4;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "f0rsakeN",
+  "code": "0;s;1;P;c;8;u;000000FF;o;1;b;1;s;0;0t;3;0l;1;0v;0;0g;1;0o;0;0a;1;0f;0;1t;1;1l;4;1g;1;1o;0;1a;1;1m;0;1f;0;S;c;0;o;1"
+ },
+ {
+  "name": "f0rsakeN",
+  "code": "0;s;1;P;o;1;0t;1;0l;1;0o;4;0a;1;0f;0;1t;1;1l;1;1o;3;1a;0;1m;0;1f;0;S;c;0;o;1"
+ },
+ {
+  "name": "FiNESSE",
+  "code": "0;P;c;1;o;1;0l;3;0o;5;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "foxz",
+  "code": "0;c;1;s;1;P;c;5;h;0;0l;3;0o;0;0a;1;0f;0;1b;0;S;c;5;s;0.812;o;1"
+ },
+ {
+  "name": "foxz",
+  "code": "0;s;1;P;c;5;u;FFFF00FF;o;1;d;1;z;3;0b;0;1b;0"
+ },
+ {
+  "name": "foxz",
+  "code": "0;P;c;1;h;0;f;0;0l;5;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "garnetS",
+  "code": "0;s;1;P;h;0;d;1;z;1;f;0;m;1;0t;1;0l;3;0o;1;0a;1;0f;0;1b;0;S;c;4;o;1"
+ },
+ {
+  "name": "Grimm",
+  "code": "0;s;1;P;c;7;u;C900FFFF;f;0;0l;3;0o;0;0a;1;0f;0;1t;6;1l;1;1o;0;1a;1;1m;0;1f;0;S;s;0.9;o;1"
+ },
+ {
+  "name": "Haodong",
+  "code": "0;s;1;P;c;5;o;1;f;0;0t;1;0l;2;0a;1;0f;0;1b;0;S;s;0.64;o;1"
+ },
+ {
+  "name": "Hiko",
+  "code": "0;P;c;1;h;0;d;1;z;1;0t;1;0l;2;0a;1;0f;0;1l;5;1o;4;1a;1;1m;0;1f;0"
+ },
+ {
+  "name": "Hiko",
+  "code": "0;c;1;s;1;P;o;0.15;f;0;0l;5;0o;2;0a;1;0e;0.25;1b;0"
+ },
+ {
+  "name": "hoody",
+  "code": "0;P;o;1;d;1;f;0;s;0;0b;0;1b;0"
+ },
+ {
+  "name": "iiTzTimmy",
+  "code": "0;P;h;0;0l;3;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "jakee",
+  "code": "0;p;0;s;1;P;c;4;u;420690FF;o;1;f;0;0t;1;0l;2;0v;3;0o;2;0a;1;0f;0;1b;0;A;o;1;d;1;0l;0;0o;2;0a;1;1b;0"
+ },
+ {
+  "name": "Jamppi",
+  "code": "0;s;1;P;o;1;d;1;f;0;0b;0;1b;0"
+ },
+ {
+  "name": "Jamppi",
+  "code": "0;s;1;P;h;0;0l;4;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "jawgemo",
+  "code": "0;c;1;s;1;P;c;7;h;0;f;0;0t;3;0l;9;0o;2;0a;1;0f;0;1b;0;S;c;1;o;1"
+ },
+ {
+  "name": "Jinggg",
+  "code": "0;s;1;P;c;1;o;1;0t;1;0l;2;0o;2;0a;1;0f;0;1b;0;S;c;5"
+ },
+ {
+  "name": "khalil",
+  "code": "0;P;h;0;f;0;0l;4;0o;0;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1m;0;1f;0"
+ },
+ {
+  "name": "Klaus",
+  "code": "0;P;c;1;o;1;0t;1;0l;3;0o;1;0a;1;0f;0;1t;0;1l;0;1a;0"
+ },
+ {
+  "name": "Kyedae",
+  "code": "0;P;c;8;u;FFFFCCFF;h;0;b;1;f;0;0l;4;0v;4;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Laz",
+  "code": "0;p;0;c;1;s;1;P;o;1;f;0;m;1;0t;1;0l;3;0a;1;0f;0;1b;0;A;c;7;o;0;d;1;z;3;f;0;s;0;m;1;0t;3;0l;2;0o;0;0a;0.5;0f;0;1b;0;S;d;0"
+ },
+ {
+  "name": "leaf",
+  "code": "0;P;c;8;u;FF99FFFF;h;0;b;1;0l;4;0o;1;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1m;0;1f;0"
+ },
+ {
+  "name": "leaf",
+  "code": "0;P;h;0;m;1;0a;1.000;0l;4;0o;0;0f;0;1b;0;1m;0;1f;0"
+ },
+ {
+  "name": "Leo",
+  "code": "0;s;1;P;h;0;0l;3;0v;4;0o;0;0a;1;0f;0;1b;0;S;c;0;s;0.64"
+ },
+ {
+  "name": "Leo",
+  "code": "0;s;1;P;u;FFFF00FF;o;1;0t;1;0l;1;0v;0;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Leo",
+  "code": "0;P;c;5;o;1;0t;1;0l;1;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Less",
+  "code": "0;P;o;0;0t;1;0l;2;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Marved",
+  "code": "0;P;c;1;h;0;f;0;0l;3;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Marved",
+  "code": "0;P;o;1;f;0;0t;1;0l;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Marved",
+  "code": "0;P;o;1;f;0;0l;4;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "mazin",
+  "code": "0;P;h;0;f;0;0l;4;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Mazino",
+  "code": "0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Melser",
+  "code": "0;P;c;1;h;0;f;0;0l;4;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "mimi",
+  "code": "0;P;c;5;u;896413FF;o;0.25;s;0;m;1;0l;4;0o;2;0a;1;0f;0;1t;0;1o;11;1a;1.0;1m;0;1f;0"
+ },
+ {
+  "name": "mindfreak",
+  "code": "0;P;c;1;h;0;d;1;0l;5;0o;0;0a;1;1b;0"
+ },
+ {
+  "name": "Mixwell",
+  "code": "0;P;c;1;o;1;d;1;0b;0;1b;0"
+ },
+ {
+  "name": "Mixwell",
+  "code": "0;p;0;s;1;P;o;1;f;0;0t;1;0l;2;0o;2;0a;1;0f;0;1b;0;A;o;1;d;1;0b;0;1b;0;S;s;0.359;o;1"
+ },
+ {
+  "name": "mwezera",
+  "code": "0;P;c;4;h;0;f;0;0l;2;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "NagZ",
+  "code": "0;s;1;P;c;1;o;1;d;1;0l;0;0o;2;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;S;c;1;o;1"
+ },
+ {
+  "name": "nAts",
+  "code": "0;P;c;1;o;1;f;0;0t;1;0l;2;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "nAts",
+  "code": "0;s;1;P;c;1;o;1;0t;1;0l;2;0o;2;0a;1;0f;0;1b;0;S;c;1;o;1"
+ },
+ {
+  "name": "Ninja",
+  "code": "0;P;c;5;u;FFFFCCFF;h;0;f;0;0l;7;0v;7;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Nivera",
+  "code": "0;s;1;P;c;1;o;1;f;0;0t;1;0l;2;0o;2;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1m;0;1f;0;S;c;5;o;0.5"
+ },
+ {
+  "name": "nobody",
+  "code": "0;s;1;P;c;8;u;000000FF;h;0;b;1;f;0;0b;0;1t;3;1l;4;1o;2;1a;1;1m;0;1f;0;S;d;0"
+ },
+ {
+  "name": "nukkye",
+  "code": "0;P;o;1;f;0;s;0;0l;3;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "nzr",
+  "code": "0;s;1;P;c;5;h;0;f;0;0l;3;0o;1;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1m;0;1f;0"
+ },
+ {
+  "name": "Patiphan",
+  "code": "0;P;c;1;h;0;d;1;z;1;f;0;s;0;0t;6;0l;1;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1m;0;1f;0"
+ },
+ {
+  "name": "QuarterJade",
+  "code": "0;P;c;8;u;00FF00FF;h;0;b;1;0t;3;0l;1;0v;1;0o;1;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Rb",
+  "code": "0;s;1;P;c;5;h;0;f;0;0l;4;0o;2;0a;1;0f;0;1b;0;S;o;1"
+ },
+ {
+  "name": "Redgar",
+  "code": "0;P;c;1;h;0;0t;1;0l;4;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "rhyme",
+  "code": "0;P;c;4;h;0;d;1;z;1;f;0;s;0;0l;5;0o;2;0a;1;0f;0;1t;3;1o;3;1a;1;1m;0;1f;0"
+ },
+ {
+  "name": "runi",
+  "code": "0;s;1;P;h;0;f;0;0t;1;0l;4;0v;4;0o;0;0a;1;0f;0;1b;0;S;d;0"
+ },
+ {
+  "name": "s0m",
+  "code": "0;P;h;0;0l;4;0v;5;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "S1mple",
+  "code": "0;P;c;1;o;1;f;0;0l;5;0v;5;0o;2;0a;1;1b;0"
+ },
+ {
+  "name": "Saadhak",
+  "code": "0;P;c;1;o;1;f;0;0l;4;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Sacy",
+  "code": "0;s;1;P;h;0;f;0;0t;1;0l;4;0o;1;0a;1;0f;0;1t;3;1o;2;1a;1;1m;0;1f;0"
+ },
+ {
+  "name": "Sayaplayer",
+  "code": "0;s;1;P;c;1;0t;1;0l;3;0o;1;0a;1;0f;0;1b;0;S;c;1;s;0.75;o;1"
+ },
+ {
+  "name": "Sayf",
+  "code": "0;P;c;7;h;0;d;1;z;3;0b;0;1b;0"
+ },
+ {
+  "name": "ScreaM",
+  "code": "0;s;1;P;c;5;o;1;d;1;z;3;f;0;0t;6;0l;0;0a;1;0f;0;1b;0;S;c;6;s;0.949;o;1"
+ },
+ {
+  "name": "ScreaM",
+  "code": "0;P;o;1;d;1;0b;0;1b;0"
+ },
+ {
+  "name": "ShahZam",
+  "code": "0;P;c;1;o;1;f;0;0l;5;0a;0.5;0f;0;1b;0"
+ },
+ {
+  "name": "ShahZam",
+  "code": "0;s;1;P;c;1;o;0.723;f;0;0t;1;0l;3;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Shao",
+  "code": "0;P;c;7;h;0;f;0;m;1;0l;4;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Shao",
+  "code": "0;P;u;FFFFCCFF;h;0;f;0;0l;5;0v;5;0o;0;0a;1;0f;0;1m;0;1f;0"
+ },
+ {
+  "name": "Shao",
+  "code": "0;P;o;1;0l;4;0o;0;0a;1;1b;0"
+ },
+ {
+  "name": "Shyy",
+  "code": "0;P;o;0;0b;0;1l;4;1o;0;1a;1;1m;0;1f;0"
+ },
+ {
+  "name": "Sinatraa",
+  "code": "0;s;1;P;c;5;o;1;0t;1;0l;3;0a;1;0f;0;1b;0;S;c;5;s;1.178"
+ },
+ {
+  "name": "SkRossi",
+  "code": "0;s;1;P;c;8;u;C0C0C0FF;o;1;d;1;b;1;0b;0;1l;0;1a;0;S;c;0;o;1"
+ },
+ {
+  "name": "Smoggy",
+  "code": "0;s;1;P;c;2;o;1;d;1;f;0;0b;0;1b;0;S;c;0;o;1"
+ },
+ {
+  "name": "Soulcas",
+  "code": "0;s;1;P;c;1;h;0;0l;3;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Stax",
+  "code": "0;P;c;4;h;0;f;0;s;0;0l;4;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "stellar",
+  "code": "0;P;c;4;u;001331FF;h;0;0l;3;0v;3;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Suygetsu",
+  "code": "0;P;c;5;h;0;d;1;f;0;s;0;0l;1;0o;1;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Suygetsu",
+  "code": "0;P;h;0;f;0;s;0;0l;3;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Suygetsu",
+  "code": "0;P;c;7;h;0;f;0;0l;2;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Tacolilla",
+  "code": "0;s;1;P;h;0;0l;4;0o;0;0a;1;0f;0;1b;0;S;c;5;s;0.75"
+ },
+ {
+  "name": "Tarik",
+  "code": "0;P;u;FFFFCCFF;o;1;d;1;f;0;0b;0;1b;0"
+ },
+ {
+  "name": "Tarik",
+  "code": "0;c;1;s;1;P;o;1;d;1;z;3;f;0;0b;0;1b;0"
+ },
+ {
+  "name": "TenZ",
+  "code": "0;s;1;P;c;5;h;0;0l;5;0v;0;0g;1;0a;1;0f;0;1l;0;1v;4;1g;1;1o;2;1a;1;1m;0;1f;0;S;c;5;o;1"
+ },
+ {
+  "name": "TenZ",
+  "code": "0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0;S;c;4;o;1"
+ },
+ {
+  "name": "TenZ",
+  "code": "0;s;1;P;h;0;d;1;z;1;m;1;0t;1;0l;2;0o;2;0a;1;1b;0;S;c;4;o;1"
+ },
+ {
+  "name": "TenZ",
+  "code": "0;s;1;P;c;5;h;0;m;1;0l;4;0v;2;0o;0;0a;1;1b;0;S;c;4;s;0.8;o;1"
+ },
+ {
+  "name": "TZH",
+  "code": "0;P;h;0;0l;5;0o;0;0f;0;1b;0"
+ },
+ {
+  "name": "Valkyrae",
+  "code": "0;P;c;7;h;0;d;1;z;4;f;0;0b;0;1b;0"
+ },
+ {
+  "name": "Victor",
+  "code": "0;P;h;0;f;0;0l;4;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Wardell",
+  "code": "0;s;1;P;h;0;0t;1;0l;4;0o;1;0a;1;0f;0;1b;0;S;o;1"
+ },
+ {
+  "name": "whyzy",
+  "code": "0;s;1;P;c;8;u;00FF7FFF;o;0.6;b;1;f;0;0t;1;0l;2;0a;0;0f;0;1t;1;1o;2;1a;1;1m;0;1f;0;S;b;1;c;8;t;00FF7FFF;s;0.511;o;1"
+ },
+ {
+  "name": "xeta",
+  "code": "0;P;c;1;o;1;f;0;s;0;0l;3;0o;6;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "yay",
+  "code": "0;s;1;P;c;7;u;FF0000FF;h;0;0l;20;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Yuicaw",
+  "code": "0;P;h;0;0l;3;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Zeek",
+  "code": "0;P;o;1;f;0;s;0;0l;3;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Zeek",
+  "code": "0;s;1;P;u;003300FF;o;1;d;1;0t;0;0l;16;0v;11;0g;1;0o;0;0f;0;1b;0;S;c;0;s;1.417;o;1"
+ },
+ {
+  "name": "Zekken",
+  "code": "0;s;1;P;c;8;u;D099E2FF;o;1;d;1;b;1;0l;0;0o;0;0a;0;0f;0;1b;0;S;c;0;s;0.5;o;1"
+ },
+ {
+  "name": "Zellsis",
+  "code": "0;P;c;4;h;0;m;1;0a;1.000;0l;4;0o;2;0f;0;1b;0;1m;0;1f;0"
+ },
+ {
+  "name": "Zeppa",
+  "code": "0;P;c;5;o;1;0t;1;0l;2;0o;2;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Zest",
+  "code": "0;s;1;P;c;1;o;1;f;0;0l;4;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "ZmjjKK",
+  "code": "0;p;0;P;u;000000FF;o;1;d;1;z;1;f;0;s;0;0t;0;0l;4;0v;2;0o;0;0a;1;0f;0;1b;0"
+ },
+ {
+  "name": "Zyppan",
+  "code": "0;s;1;P;h;0;0l;4;0o;0;0a;1;0f;0;1t;1;1l;0;1o;0;1m;0;1f;0"
+ },
+ {
+  "name": "Heart",
+  "code": "0;P;c;6;o;0.1;m;1;0t;5;0l;3;0o;1;0a;0.7;0f;0;1t;1;1l;5;1o;0;1a;0.7;1m;0;1f;0"
+ },
+ {
+  "name": "Circle",
+  "code": "0;P;c;7;h;0;f;0;0t;3;0l;1;0v;1;0g;1;0o;1;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1f;0"
+ },
+ {
+  "name": "Dot",
+  "code": "0;s;1;P;h;0;d;1;z;3;f;0;0t;3;0l;1;0o;1;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1f;0"
+ },
+ {
+  "name": "Cat",
+  "code": "0;P;c;8;u;FF69B4FF;h;0;d;1;b;1;z;3;0t;10;0l;0;0v;3;0g;1;0o;1;0a;1;0f;0;1t;9;1v;0;1g;1;1o;3;1a;1;1m;0;1f;0"
+ },
+ {
+  "name": "Flower",
+  "code": "0;P;c;4;o;1;d;1;z;3;f;0;0t;1;0l;3;0a;1;0f;0;1t;9;1l;1;1o;2;1a;0;1m;0;1f;0"
+ },
+ {
+  "name": "Shuriken",
+  "code": "0;P;c;5;h;0;f;0;0t;1;0l;3;0v;3;0g;1;0o;2;0a;1;0f;0;1t;3;1l;3;1v;3;1g;1;1o;0;1a;1;1m;0;1f;0"
+ },
+ {
+  "name": "X",
+  "code": "0;P;h;0;d;1;0t;8;0l;2;0o;1;0a;1;0f;0;1t;10;1l;1;1o;2;1a;1;1m;0;1f;0"
+ },
+ {
+  "name": "Diamond",
+  "code": "0;P;c;5;h;0;d;1;z;4;f;0;0t;4;0l;1;0v;1;0g;1;0o;2;0a;1;0f;0;1l;1;1v;1;1g;1;1o;3;1a;1;1m;0;1f;0"
+ },
+ {
+  "name": "Square",
+  "code": "0;P;c;1;o;1;0t;10;0l;1;0o;5;0a;1;0f;0;1l;0;1o;0;1a;1;1m;0;1f;0"
+ },
+ {
+  "name": "Snowflake",
+  "code": "0;P;h;0;0t;1;0l;4;0o;0;0a;1;0m;1;0f;0;0s;0.02;1t;3;1l;1;1o;2;1a;1;1f;0;1s;0.02"
+ }
+]

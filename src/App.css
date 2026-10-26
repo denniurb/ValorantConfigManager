@@ -215,6 +215,24 @@ button.chip.warn:hover { background: color-mix(in srgb, var(--warn) 22%, transpa
 .pro-card:hover:not(:disabled) { border-color: var(--accent); transform: translateY(-2px); }
 .pro-card:disabled { opacity: 0.5; cursor: not-allowed; }
 
+/* ── Crosshair-Galerie ───────────────────────────────────────────────── */
+.howto-card, .paste-card { gap: 8px; }
+.paste-row { display: flex; gap: 10px; align-items: center; }
+.paste-row input { flex: 1; }
+.code-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; padding-bottom: 28px; }
+.code-card {
+  display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 12px 10px;
+  border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-1); text-align: center;
+  transition: border-color 0.12s, transform 0.12s, background 0.12s;
+}
+.code-card .xh-stage { width: 100%; }
+.code-card b { font-size: 13px; }
+.code-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.code-card.copied { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 8%, var(--bg-1)); }
+.code-text { font-size: 10.5px; color: var(--muted); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.copy-hint { font-size: 11px; color: var(--dim); }
+.code-card.copied .copy-hint { color: var(--ok); font-weight: 700; }
+
 /* ── Stats ────────────────────────────────────────────────────────────── */
 .search-row { display: flex; gap: 6px; align-items: center; }
 .search-row input { width: 170px; }

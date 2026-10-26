@@ -57,6 +57,47 @@ function myStats(match: any, name: string): MyStats {
 
 const actLabel = (short: string) => short.toUpperCase().replace("A", " A");
 
+/** Wie viele Seiten à 10 Spiele geladen werden (5 Seiten = 50 Spiele) */
+const MATCH_PAGES = 5;
+
+/** Matches-v4-Antwort in das Format übersetzen, das die Ansicht schon nutzt (wie v3) */
+function toLegacyMatch(m: any) {
+  const teams: Record<string, any> = {};
+  for (const t of m.teams ?? []) {
+    teams[String(t.team_id).toLowerCase()] = { has_won: !!t.won, rounds_won: t.rounds?.won ?? 0, rounds_lost: t.rounds?.lost ?? 0 };
+  }
+  return {
+    metadata: {
+      matchid: m.metadata?.match_id,
+      map: m.metadata?.map?.name,
+      mode: m.metadata?.queue?.id ?? "",
+      rounds_played: m.rounds?.length || 1,
+      season_id: m.metadata?.season?.id,
+      game_start: m.metadata?.started_at,
+    },
+    players: {
+      all_players: (m.players ?? []).map((p: any) => ({
+        puuid: p.puuid,
+        name: p.name,
+        tag: p.tag,
+        team: String(p.team_id ?? "").toLowerCase(),
+        character: p.agent?.name ?? "—",
+        damage_made: p.stats?.damage?.dealt ?? 0,
+        stats: {
+          kills: p.stats?.kills ?? 0,
+          deaths: p.stats?.deaths ?? 0,
+          assists: p.stats?.assists ?? 0,
+          score: p.stats?.score ?? 0,
+          headshots: p.stats?.headshots ?? 0,
+          bodyshots: p.stats?.bodyshots ?? 0,
+          legshots: p.stats?.legshots ?? 0,
+        },
+      })),
+    },
+    teams,
+  };
+}
+
 const pct = (a: number, b: number) => (b > 0 ? `${Math.round((a / b) * 100)}%` : "—");
 
 export function StatsTab() {
@@ -80,6 +121,23 @@ export function StatsTab() {
 
   const get = async (path: string, ttl: number) => JSON.parse(await api.henrikGet(path, ttl, key)).data;
 
+  // Matches v4 liefert je Seite 10 Spiele (start=0,10,20,…). MATCH_PAGES × 10 = geladene Spiele.
+  const fetchMatches = async (n: string, t: string, mode: string) => {
+    // size explizit setzen: ohne size liefert die API nur 5 Spiele pro Seite
+    const base = `v4/matches/eu/pc/${enc(n)}/${enc(t)}?mode=${mode}&size=10`;
+    const first = await get(`${base}&start=0`, TTL.matches);
+    const rest = await Promise.all(
+      Array.from({ length: MATCH_PAGES - 1 }, (_, i) => get(`${base}&start=${(i + 1) * 10}`, TTL.matches).catch(() => [])),
+    );
+    const seen = new Set<string>();
+    return [first, ...rest].flat().filter((m: any) => {
+      const id = m.metadata?.match_id;
+      if (!id || seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    }).map(toLegacyMatch);
+  };
+
   const load = async (n: string, t: string, mode: string) => {
     if (!n || !t || !key) return;
     setLoading(true);
@@ -88,7 +146,7 @@ export function StatsTab() {
       get(`v1/account/${enc(n)}/${enc(t)}`, TTL.account),
       get(`v3/mmr/eu/pc/${enc(n)}/${enc(t)}`, TTL.rank),
       get(`v2/mmr-history/eu/pc/${enc(n)}/${enc(t)}`, TTL.rank),
-      get(`v3/matches/eu/${enc(n)}/${enc(t)}?size=20&mode=${mode}`, TTL.matches),
+      fetchMatches(n, t, mode),
     ]);
     setAccount(acc.status === "fulfilled" ? { name: `${acc.value.name}#${acc.value.tag}`, level: acc.value.account_level } : null);
     setMmr(mmrRes.status === "fulfilled" ? mmrRes.value : null);

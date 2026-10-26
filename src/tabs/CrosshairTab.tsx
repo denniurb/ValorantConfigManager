@@ -1,111 +1,100 @@
-import { useEffect, useMemo, useState } from "react";
-import { api, errText, type CrosshairState, type ProCrosshair } from "../api";
+import { useMemo, useState } from "react";
 import { useApp } from "../state";
-import { PRO_CROSSHAIRS } from "../proCrosshairs";
-import { CrosshairPreview, specFromPro, specFromProfile } from "../components/CrosshairPreview";
+import { CrosshairPreview } from "../components/CrosshairPreview";
+import { decodeCrosshair } from "../crosshairCode";
+import codes from "../data/crosshairCodes.json";
+
+interface CodeEntry {
+  name: string;
+  code: string;
+}
+const LIBRARY = codes as CodeEntry[];
+
+async function copyText(text: string) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export function CrosshairTab() {
-  const { settings, selected, toast } = useApp();
-  const [paths, setPaths] = useState<string[] | null>(null);
-  const [state, setState] = useState<CrosshairState | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState("");
+  const { toast } = useApp();
+  const [query, setQuery] = useState("");
+  const [pasted, setPasted] = useState("");
+  const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
-  useEffect(() => {
-    api.crosshairPaths(settings.ValorantConfigBase, selected?.FolderId ?? null).then(async (p) => {
-      setPaths(p);
-      if (p.length === 0) {
-        setError("RiotUserSettings.ini nicht gefunden. Profil wählen und zuerst „Configs anwenden“ oder Valorant einmal starten.");
-        return;
-      }
-      try {
-        setState(await api.crosshairLoad(p));
-        setError(null);
-      } catch (e) {
-        setError(errText(e));
-      }
-    });
-  }, [settings.ValorantConfigBase, selected?.FolderId]);
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return q ? LIBRARY.filter((c) => c.name.toLowerCase().includes(q) || c.code.toLowerCase().includes(q)) : LIBRARY;
+  }, [query]);
 
-  const act = async (fn: () => Promise<CrosshairState>, msg: string) => {
-    try {
-      setState(await fn());
-      toast(msg);
-    } catch (e) {
-      toast(errText(e), "err");
+  const pastedSpec = pasted.trim() ? decodeCrosshair(pasted.trim()) : null;
+
+  const copy = async (code: string) => {
+    if (await copyText(code)) {
+      setCopiedCode(code);
+      setTimeout(() => setCopiedCode((c) => (c === code ? null : c)), 1500);
+      toast("Code kopiert — in Valorant einfügen", "ok");
+    } else {
+      toast("Kopieren nicht möglich, bitte Code manuell markieren", "err");
     }
   };
 
-  const pros = useMemo(() => {
-    const q = filter.toLowerCase();
-    return PRO_CROSSHAIRS.filter((p) => !q || p.player.toLowerCase().includes(q) || p.team.toLowerCase().includes(q));
-  }, [filter]);
-
-  const active = state?.profiles[state.current];
-  const activeSpec = active ? specFromProfile(active) : null;
-
-  const applyPro = (pro: ProCrosshair) =>
-    paths && act(() => api.crosshairApplyPro(paths, pro), `✔ '${pro.player}' auf '${active?.profileName ?? "aktives Profil"}' angewendet`);
-
   return (
-    <div className="split">
-      <aside className="list-pane wide">
-        <div className="pane-head">
-          <h3>Deine Crosshairs</h3>
-          {state && <span className="count">{state.profiles.length}</span>}
+    <div className="page">
+      <div className="page-head">
+        <div>
+          <h2>Crosshairs</h2>
+          <p className="muted">Crosshair auswählen, Code kopieren und in Valorant einfügen.</p>
         </div>
-        {error && <p className="err-text pad">{error}</p>}
-        {active && activeSpec && (
-          <div className="active-xh">
-            <span className="chip ok">AKTIV</span>
-            <div className="xh-stage big">
-              <CrosshairPreview spec={activeSpec} size={180} scale={4.5} />
-            </div>
-            <b>{active.profileName || `Profil ${state!.current + 1}`}</b>
-          </div>
-        )}
-        <div className="xh-list">
-          {state?.profiles.map((p, i) => {
-            const spec = specFromProfile(p);
-            return (
-              <button
-                key={i}
-                className={`xh-row ${i === state.current ? "selected" : ""}`}
-                onClick={() => paths && i !== state.current && act(() => api.crosshairSetActive(paths, i), `'${p.profileName}' ist jetzt aktiv`)}
-              >
-                <div className="xh-stage">{spec && <CrosshairPreview spec={spec} size={40} scale={1.6} />}</div>
-                <span>{p.profileName || `Profil ${i + 1}`}</span>
-              </button>
-            );
-          })}
-        </div>
-        {paths && paths.length > 0 && (
-          <button className="btn ghost wide" onClick={() => act(() => api.crosshairLoadDefault(paths), "Standard-Config geladen")}>
-            ⟳ Standard-Config laden
-          </button>
-        )}
-      </aside>
+        <input className="search" placeholder="Name oder Code suchen…" value={query} onChange={(e) => setQuery(e.target.value)} />
+      </div>
 
-      <section className="detail">
-        <div className="detail-head">
-          <div>
-            <h2>Pro Crosshairs</h2>
-            <p className="muted">Klick = wird auf dein aktives Crosshair-Profil geschrieben (Valorant vorher schließen).</p>
-          </div>
-          <input className="search" placeholder="Spieler oder Team…" value={filter} onChange={(e) => setFilter(e.target.value)} />
+      <div className="card howto-card">
+        <h4>So importierst du den Code</h4>
+        <ol className="howto">
+          <li>Crosshair anklicken (der Code wird kopiert).</li>
+          <li>
+            In Valorant: <b>Einstellungen → Crosshair</b> → oben rechts <b>Import Profile Code</b>.
+          </li>
+          <li>Code einfügen → <b>Import</b>. Das Crosshair wird sofort in der Vorschau übernommen.</li>
+        </ol>
+        <p className="hint">Ein Account kann bis zu 15 Crosshair-Profile speichern. Codes ändern nur das Aussehen, keine Sensitivität oder Tasten.</p>
+      </div>
+
+      <div className="card paste-card">
+        <h4>Code von anderswo einfügen</h4>
+        <div className="paste-row">
+          <input placeholder="0;P;c;5;h;0;…" value={pasted} onChange={(e) => setPasted(e.target.value)} className="mono" />
+          {pastedSpec && (
+            <div className="xh-stage">
+              <CrosshairPreview spec={pastedSpec} size={72} scale={2.4} />
+            </div>
+          )}
+          <button className="btn primary" disabled={!pastedSpec} onClick={() => copy(pasted.trim())}>
+            {copiedCode === pasted.trim() ? "✔ Kopiert" : "Kopieren"}
+          </button>
         </div>
-        <div className="pro-grid">
-          {pros.map((p) => (
-            <button key={p.player} className="pro-card" disabled={!state} onClick={() => applyPro(p)}>
-              <div className="xh-stage">
-                <CrosshairPreview spec={specFromPro(p)} size={96} scale={3} />
-              </div>
-              <b>{p.player}</b>
-              <span>{p.team}</span>
+        {pasted.trim() && !pastedSpec && <p className="err-text">Das sieht nicht nach einem Valorant-Crosshair-Code aus.</p>}
+      </div>
+
+      <div className="code-grid">
+        {filtered.map((c) => {
+          const spec = decodeCrosshair(c.code);
+          const isCopied = copiedCode === c.code;
+          return (
+            <button key={c.code} className={`code-card ${isCopied ? "copied" : ""}`} onClick={() => copy(c.code)} title={c.code}>
+              <div className="xh-stage">{spec && <CrosshairPreview spec={spec} size={96} scale={3} />}</div>
+              <b>{c.name}</b>
+              <span className="code-text mono">{c.code}</span>
+              <span className="copy-hint">{isCopied ? "✔ kopiert" : "Klicken zum Kopieren"}</span>
             </button>
-          ))}
-        </div>
-      </section>
+          );
+        })}
+        {filtered.length === 0 && <p className="muted">Keine Crosshairs gefunden.</p>}
+      </div>
     </div>
   );
 }
