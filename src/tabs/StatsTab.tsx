@@ -41,19 +41,21 @@ function RankBadge({ tier, tiers }: { tier: number; tiers: Record<number, TierIn
 const enc = encodeURIComponent;
 
 interface MyStats {
-  k: number; d: number; a: number; score: number; hs: number; bs: number; ls: number; won: boolean; agent: string;
+  k: number; d: number; a: number; score: number; hs: number; bs: number; ls: number; won: boolean; agent: string; dmg: number;
 }
 
 function myStats(match: any, name: string): MyStats {
   const players: any[] = match?.players?.all_players ?? [];
   const me = players.find((p) => p.name?.toLowerCase() === name.toLowerCase());
-  if (!me) return { k: 0, d: 0, a: 0, score: 0, hs: 0, bs: 0, ls: 0, won: false, agent: "—" };
+  if (!me) return { k: 0, d: 0, a: 0, score: 0, hs: 0, bs: 0, ls: 0, won: false, agent: "—", dmg: 0 };
   const s = me.stats ?? {};
   let won = false;
   if (match.metadata?.mode?.toLowerCase() === "deathmatch") won = !players.some((p) => (p.stats?.kills ?? 0) > s.kills);
   else won = !!match.teams?.[me.team?.toLowerCase()]?.has_won;
-  return { k: s.kills ?? 0, d: s.deaths ?? 0, a: s.assists ?? 0, score: s.score ?? 0, hs: s.headshots ?? 0, bs: s.bodyshots ?? 0, ls: s.legshots ?? 0, won, agent: me.character ?? "—" };
+  return { k: s.kills ?? 0, d: s.deaths ?? 0, a: s.assists ?? 0, score: s.score ?? 0, hs: s.headshots ?? 0, bs: s.bodyshots ?? 0, ls: s.legshots ?? 0, won, agent: me.character ?? "—", dmg: me.damage_made ?? 0 };
 }
+
+const actLabel = (short: string) => short.toUpperCase().replace("A", " A");
 
 const pct = (a: number, b: number) => (b > 0 ? `${Math.round((a / b) * 100)}%` : "—");
 
@@ -132,18 +134,38 @@ export function StatsTab() {
       </div>
     );
 
+  // Nur Competitive: auf den aktuellen Act filtern (Match-season_id = Act-ID aus MMR v3)
+  const playedActs = mmr?.seasonal.filter((s) => s.games > 0) ?? [];
+  const currentAct = filter === "competitive" ? playedActs[playedActs.length - 1] : undefined;
+  const scoped = currentAct ? matches.filter((m) => m.metadata?.season_id === currentAct.season.id) : matches;
+  const scopeLabel = currentAct ? `Aktueller Act ${actLabel(currentAct.season.short)}` : `Letzte ${matches.length} Spiele`;
+
   // Aggregierte Stats
-  const all = matches.map((m) => ({ m, s: myStats(m, name) }));
+  const all = scoped.map((m) => ({ m, s: myStats(m, name), rounds: Math.max(1, m.metadata?.rounds_played ?? 1) }));
   const tot = all.reduce(
-    (acc, { m, s }) => {
+    (acc, { s, rounds }) => {
       acc.k += s.k; acc.d += s.d; acc.hs += s.hs; acc.shots += s.hs + s.bs + s.ls;
-      acc.acs += s.score / Math.max(1, m.metadata?.rounds_played ?? 1);
+      acc.acs += s.score / rounds;
+      acc.dmg += s.dmg; acc.rounds += rounds;
       if (s.won) acc.w++;
       return acc;
     },
-    { k: 0, d: 0, hs: 0, shots: 0, acs: 0, w: 0 },
+    { k: 0, d: 0, hs: 0, shots: 0, acs: 0, w: 0, dmg: 0, rounds: 0 },
   );
   const n = all.length;
+
+  // Agent-Tabelle: Spiele, Winrate, K/D, ADR, ACS, HS%
+  const agents = (() => {
+    const map = new Map<string, { games: number; wins: number; k: number; d: number; dmg: number; rounds: number; score: number; hs: number; shots: number }>();
+    for (const { s, rounds } of all) {
+      const g = map.get(s.agent) ?? { games: 0, wins: 0, k: 0, d: 0, dmg: 0, rounds: 0, score: 0, hs: 0, shots: 0 };
+      g.games++; g.wins += s.won ? 1 : 0; g.k += s.k; g.d += s.d; g.dmg += s.dmg; g.rounds += rounds;
+      g.score += s.score; g.hs += s.hs; g.shots += s.hs + s.bs + s.ls;
+      map.set(s.agent, g);
+    }
+    return [...map.entries()].sort((a, b) => b[1].games - a[1].games);
+  })();
+
   const groupBy = (keyFn: (x: (typeof all)[number]) => string) => {
     const map = new Map<string, { games: number; wins: number; k: number; d: number }>();
     for (const x of all) {
@@ -201,11 +223,16 @@ export function StatsTab() {
 
       {error && <p className="err-text">{error}</p>}
 
+      <div className="scope-label">
+        {scopeLabel} · {n} Spiele
+        {currentAct && matches.length > n && <span className="muted"> (ältere Spiele ausgeblendet)</span>}
+      </div>
       <div className="kpis">
         {[
           ["Winrate", n ? pct(tot.w, n) : "—"],
           ["K/D", n ? (tot.d ? (tot.k / tot.d).toFixed(2) : String(tot.k)) : "—"],
           ["ACS", n ? Math.round(tot.acs / n) : "—"],
+          ["ADR", tot.rounds ? Math.round(tot.dmg / tot.rounds) : "—"],
           ["HS%", pct(tot.hs, tot.shots)],
           ["Matches", n || "—"],
         ].map(([l, v]) => (
@@ -219,7 +246,7 @@ export function StatsTab() {
       <div className="stats-grid">
         <div className="card match-list">
           <div className="card-head">
-            <h4>Letzte Matches</h4>
+            <h4>Matches</h4>
             {loading && <span className="muted">lädt…</span>}
           </div>
           {all.map(({ m, s }) => {
@@ -249,18 +276,36 @@ export function StatsTab() {
               </div>
             ))}
           </div>
-          <div className="card">
-            <h4>Top Agents</h4>
-            {groupBy((x) => x.s.agent).map(([k, g]) => (
-              <div className="top-row" key={k}>
-                <span>{k}</span>
-                <span className="muted">{g.games} Spiele</span>
-                <b className="accent">KD {(g.d ? g.k / g.d : g.k).toFixed(2)}</b>
+        </div>
+      </div>
+
+      {agents.length > 0 && (
+        <div className="card">
+          <h4>Agenten</h4>
+          <div className="agent-table">
+            <div className="agent-row head">
+              <span>Agent</span>
+              <span>Spiele</span>
+              <span>Winrate</span>
+              <span>K/D</span>
+              <span>ADR</span>
+              <span>ACS</span>
+              <span>HS%</span>
+            </div>
+            {agents.map(([agent, g]) => (
+              <div className="agent-row" key={agent}>
+                <span className="agent-name">{agent}</span>
+                <span className="muted">{g.games}</span>
+                <span className={g.wins / g.games >= 0.5 ? "ok-text" : "err-text"}>{pct(g.wins, g.games)}</span>
+                <span>{(g.d ? g.k / g.d : g.k).toFixed(2)}</span>
+                <span>{g.rounds ? Math.round(g.dmg / g.rounds) : "—"}</span>
+                <span>{Math.round(g.score / Math.max(1, g.rounds))}</span>
+                <span>{pct(g.hs, g.shots)}</span>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      )}
 
       {board && (
         <Scoreboard

@@ -223,7 +223,13 @@ button.chip.warn:hover { background: color-mix(in srgb, var(--warn) 22%, transpa
 .pill { border: 1px solid var(--line-2); background: transparent; border-radius: 99px; padding: 6px 14px; color: var(--dim); font-weight: 600; font-size: 12.5px; }
 .pill:hover { color: var(--text); }
 .pill.on { background: var(--accent); border-color: var(--accent); color: #fff; }
-.kpis { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+.scope-label { font-size: 12px; color: var(--dim); font-weight: 600; margin-top: -6px; }
+.agent-table { display: flex; flex-direction: column; gap: 2px; }
+.agent-row { display: grid; grid-template-columns: 1.4fr 0.7fr 0.9fr 0.7fr 0.7fr 0.7fr 0.7fr; gap: 8px; padding: 8px 12px; border-radius: 7px; font-size: 13px; align-items: center; }
+.agent-row:not(.head):hover { background: var(--bg-3); }
+.agent-row.head { font-size: 10.5px; color: var(--muted); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.agent-name { font-weight: 700; }
 .kpi { background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
 .kpi span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; }
 .kpi b { font-size: 26px; font-weight: 800; }
@@ -310,4 +316,5 @@ button.chip.warn:hover { background: color-mix(in srgb, var(--warn) 22%, transpa
 @media (max-width: 1100px) {
   .stats-grid { grid-template-columns: 1fr; }
   .kpis { grid-template-columns: repeat(3, 1fr); }
+  .agent-row { font-size: 12px; }
 }

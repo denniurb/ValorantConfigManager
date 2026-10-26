@@ -54,7 +54,7 @@ interface TierRef {
 export interface MmrV3 {
   current: { tier: TierRef; rr: number; last_change: number; elo: number; games_needed_for_rating: number; rank_protection_shields: number };
   peak: { season: { short: string }; tier: TierRef; rr: number } | null;
-  seasonal: { season: { short: string }; wins: number; games: number; end_tier: TierRef; end_rr: number; act_wins: TierRef[] }[];
+  seasonal: { season: { id: string; short: string }; wins: number; games: number; end_tier: TierRef; end_rr: number; act_wins: TierRef[] }[];
 }
 export interface MmrHistoryEntry {
   tier: TierRef;
